@@ -1,6 +1,5 @@
 // Q1
 // Develop a Menu driven program to demonstrate the following operations of Arrays
-
 // ——MENU——-
 // 1.CREATE
 // 2. DISPLAY
@@ -9,11 +8,12 @@
 // 5. LINEAR SEARCH
 // 6. EXIT
 
+
 #include <iostream>
 using namespace std;
 
 const int MAX = 100;
-int arr[MAX], n = 0; // n = current number of elements
+int arr[MAX], n = 0; 
 
 void createArray() {
     cout << "Enter number of elements: ";
