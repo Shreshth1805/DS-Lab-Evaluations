@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+#define SIZE 100
+
+void arrayMenu() {
+    int arr[SIZE], n = 0;
+    int choice;
+    do {
+        cout << "1.CREATE 2.DISPLAY 3.INSERT 4.DELETE 5.SEARCH 6.EXIT\n";
+        cin >> choice;
+        if (choice == 1) { cout << "Enter size: "; cin >> n; for (int i = 0; i < n; i++) cin >> arr[i]; }
+        else if (choice == 2) { for (int i = 0; i < n; i++) cout << arr[i] << " "; cout << endl; }
+        else if (choice == 3) { int pos, val; cin >> pos >> val; for (int i = n; i > pos; i--) arr[i] = arr[i - 1]; arr[pos] = val; n++; }
+        else if (choice == 4) { int pos; cin >> pos; for (int i = pos; i < n - 1; i++) arr[i] = arr[i + 1]; n--; }
+        else if (choice == 5) { int key; cin >> key; int f = -1; for (int i = 0; i < n; i++) if (arr[i] == key) { f = i; break; } if (f != -1) cout << "Found at " << f << endl; else cout << "Not found\n"; }
+    } while (choice != 6);
+}
+
+void removeDuplicates() {
+    int n; cin >> n; int arr[n]; for (int i = 0; i < n; i++) cin >> arr[i]; int k = 0;
+    for (int i = 0; i < n; i++) { bool f = false; for (int j = 0; j < k; j++) if (arr[i] == arr[j]) f = true; if (!f) arr[k++] = arr[i]; }
+    for (int i = 0; i < k; i++) cout << arr[i] << " ";
+}
+
+void predictOutput() {
+    int arr[5] = {1}; for (int i = 0; i < 5; i++) cout << arr[i];
+    // outut is 10000
+}
+
+void reverseArray() {
+    int n; cin >> n; int arr[n]; for (int i = 0; i < n; i++) cin >> arr[i]; for (int i = n - 1; i >= 0; i--) cout << arr[i] << " ";
+}
+
+void matrixMultiplication() {
+    int r1, c1, r2, c2; cin >> r1 >> c1 >> r2 >> c2; if (c1 != r2) return;
+    int A[r1][c1], B[r2][c2], C[r1][c2];
+    for (int i = 0; i < r1; i++) for (int j = 0; j < c1; j++) cin >> A[i][j];
+    for (int i = 0; i < r2; i++) for (int j = 0; j < c2; j++) cin >> B[i][j];
+    for (int i = 0; i < r1; i++) for (int j = 0; j < c2; j++) { C[i][j] = 0; for (int k = 0; k < c1; k++) C[i][j] += A[i][k] * B[k][j]; }
+    for (int i = 0; i < r1; i++) { for (int j = 0; j < c2; j++) cout << C[i][j] << " "; cout << endl; }
+}
+
+void transposeMatrix() {
+    int r, c; cin >> r >> c; int A[r][c]; for (int i = 0; i < r; i++) for (int j = 0; j < c; j++) cin >> A[i][j];
+    for (int i = 0; i < c; i++) { for (int j = 0; j < r; j++) cout << A[j][i] << " "; cout << endl; }
+}
+
+void rowColSum() {
+    int r, c; cin >> r >> c; int A[r][c]; for (int i = 0; i < r; i++) for (int j = 0; j < c; j++) cin >> A[i][j];
+    for (int i = 0; i < r; i++) { int sum = 0; for (int j = 0; j < c; j++) sum += A[i][j]; cout << sum << endl; }
+    for (int j = 0; j < c; j++) { int sum = 0; for (int i = 0; i < r; i++) sum += A[i][j]; cout << sum << endl; }
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "\n1.Array Menu 2.Remove Duplicates 3.Predict Output 4.Reverse Array 5.Matrix Multiplication 6.Transpose 7.Row & Col Sum 8.Exit\n";
+        cin >> choice;
+        if (choice == 1) arrayMenu();
+        else if (choice == 2) removeDuplicates();
+        else if (choice == 3) predictOutput();
+        else if (choice == 4) reverseArray();
+        else if (choice == 5) matrixMultiplication();
+        else if (choice == 6) transposeMatrix();
+        else if (choice == 7) rowColSum();
+    } while (choice != 8);
+}
