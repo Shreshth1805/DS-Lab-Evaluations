@@ -39,3 +39,6 @@
 
 # debug information files
 *.dwo
+
+# AnushkaVerma executables
+DS/DS-Lab-Evaluations/LAB-2/A2_AnushkaVerma/*.exe
